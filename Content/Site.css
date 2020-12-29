@@ -1,15 +1,28 @@
-﻿body {
+﻿hmtl, body {
+    height: 100vh;
+    width: 100%;
+    background: linear-gradient(rgba(0, 0, 0, 0.8),rgba(0, 0, 0, 0.7))
+}
+
+#home {
+    background: linear-gradient(rgba(0, 0, 0, 0.8),rgba(0, 0, 0, 0.7)),url('../Images/pexels-pixabay-162583.jpg') no-repeat center center;
+    display: table;
+    height: 100%;
+    width: 100%;
+    background-size: cover;
+}
+
+body {
     padding-top: 50px;
     padding-bottom: 20px;
-    background-color:azure;
-    color:blue;
+    
 }
 
 /* Set padding to keep content from hitting the edges */
 .body-content {
     padding-left: 15px;
     padding-right: 15px;
-    height:600px;
+    height: 600px;
 }
 
 .page-holder {
@@ -29,4 +42,12 @@ input,
 select,
 textarea {
     max-width: 280px;
+}
+
+#home_content, footer{
+    color:white;
+}
+
+.jumbotron{
+    margin-top:10%;
 }
