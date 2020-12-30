@@ -1,4 +1,5 @@
 ﻿using System;
+using System.ComponentModel.DataAnnotations;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -7,24 +8,21 @@ namespace BookingApp.Models
 {
     public class SchedulerEvent
     {
-        private ICollection<Company> _companys;
-
-        public SchedulerEvent()
-        {
-            _companys = new List<Company>();
-        }
-
+        
         public int Id { get; set; }
+        [Required]
         public string Name { get; set; }
-
+        [Required]
         public int Num_Guests { get; set; }
+        [Required]
         public DateTime StartDate { get; set; }
+        [Required]
         public DateTime EndDate { get; set; }
 
-        public virtual ICollection<Company> Companys
-        {
-            get { return _companys; }
-            set { _companys = value; }
-        }
+        //Forgein Key
+        public int CompanyID { get; set; }
+        //Navigation property
+        public Company Company { get; set; }
+
     }
 }

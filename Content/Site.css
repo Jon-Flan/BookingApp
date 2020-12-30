@@ -44,10 +44,14 @@ textarea {
     max-width: 280px;
 }
 
-#home_content, footer{
+#home_content, footer, h2, p, th, td{
     color:white;
 }
 
 .jumbotron{
     margin-top:10%;
+}
+
+#title_text{
+    color:black;
 }

@@ -1,10 +1,11 @@
 ﻿@model IEnumerable<BookingApp.Models.Company>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Bookings";
+    ViewBag.Message = "Choose a compnay to view their calendar and make a booking.";
 }
 
-<h2>Index</h2>
+<h2>@ViewBag.Message</h2>
 
 <p>
     @Html.ActionLink("Create New", "Create")
@@ -20,20 +21,19 @@
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.CompanyName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.CompanyAddress)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.CompanyId }) |
-            @Html.ActionLink("Details", "Details", new { id=item.CompanyId }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.CompanyId })
-        </td>
-    </tr>
-}
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.CompanyName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CompanyAddress)
+            </td>
+            <td>
+                @Html.ActionLink("Calendar", "Index", "Event") 
+            </td>
+        </tr>
+    }
 
 </table>

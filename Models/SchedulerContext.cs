@@ -11,7 +11,7 @@ namespace BookingApp.Models
 
         public SchedulerContext() : base("SchedulerContext")
         {
-
+           
         }
         public DbSet<SchedulerEvent> SchedulerEvents { get; set; }
         public DbSet<Company> Companys { get; set; }
