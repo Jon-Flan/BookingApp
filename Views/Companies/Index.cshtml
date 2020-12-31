@@ -1,10 +1,10 @@
 ﻿@model IEnumerable<Booking_App.Models.Company>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Companies";
 }
 
-<h2>Index</h2>
+<h2>Companies</h2>
 
 <p>
     @Html.ActionLink("Create New", "Create")
@@ -25,8 +25,9 @@
 
 @foreach (var item in Model) {
 <tr>
-    <td onmouseover="onNameMouseOver(@item.ID)">
-        @Html.DisplayFor(modelItem => item.Name)
+    <td>
+        @Html.DisplayFor(modelItem => item.Name)  
+        <a onmousedown="onNameMouseOver(@item.ID)" href="#" class="btn btn-primary btn-xs">Info &raquo;</a>
     </td>
     <td>
         @Html.DisplayFor(modelItem => item.Address)
