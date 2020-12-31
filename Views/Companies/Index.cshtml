@@ -25,7 +25,7 @@
 
 @foreach (var item in Model) {
 <tr>
-    <td>
+    <td onmouseover="onNameMouseOver(@item.ID)">
         @Html.DisplayFor(modelItem => item.Name)
     </td>
     <td>
@@ -43,3 +43,104 @@
 }
 
 </table>
+
+@section Scripts{
+    <script type="text/javascript">
+        function onNameMouseOver(id) {
+            $.ajax({
+                url: "/api/CompaniesAPI",
+                data: {
+                    id:id
+                },
+                dataType:"text",
+                success: function (result) {
+                    var details = JSON.parse(result);
+
+                    var numDays = details.Hours.length;
+
+
+                    var openingTime = "Opening Times: \n";
+
+                    for (var i = 0; i < details.Hours.length; i++ ) {
+                        switch (details.Hours[i].Day) {
+                            case 7:
+                                day = "Sunday";
+                                var time = new Date(details.Hours[0].OpenTime)
+                                var time2 = time.toLocaleTimeString('en-US');
+
+                                var time3 = new Date(details.Hours[0].CloseTime)
+                                var time4 = time3.toLocaleTimeString('en-US');
+
+                                openingTime = openingTime.concat(day + "- Open: " + time2 + "  Close: "+ time4 +"\n")
+                                break;
+                            case 1:
+                                day = "Monday";
+                                var time = new Date(details.Hours[0].OpenTime)
+                                var time2 = time.toLocaleTimeString('en-US');
+
+                                var time3 = new Date(details.Hours[0].CloseTime)
+                                var time4 = time3.toLocaleTimeString('en-US');
+
+                                openingTime = openingTime.concat(day + "- Open: " + time2 + "  Close: " + time4 + "\n")
+                                break;
+                            case 2:
+                                day = "Tuesday";
+                                var time = new Date(details.Hours[0].OpenTime)
+                                var time2 = time.toLocaleTimeString('en-US');
+
+                                var time3 = new Date(details.Hours[0].CloseTime)
+                                var time4 = time3.toLocaleTimeString('en-US');
+
+                                openingTime = openingTime.concat(day + "- Open: " + time2 + "  Close: " + time4 + "\n")
+                                break;
+                            case 3:
+                                day = "Wednesday";
+                                var time = new Date(details.Hours[0].OpenTime)
+                                var time2 = time.toLocaleTimeString('en-US');
+
+                                var time3 = new Date(details.Hours[0].CloseTime)
+                                var time4 = time3.toLocaleTimeString('en-US');
+
+                                openingTime = openingTime.concat(day + "- Open: " + time2 + "  Close: " + time4 + "\n")
+                                break;
+                            case 4:
+                                day = "Thursday";
+                                var time = new Date(details.Hours[0].OpenTime)
+                                var time2 = time.toLocaleTimeString('en-US');
+
+                                var time3 = new Date(details.Hours[0].CloseTime)
+                                var time4 = time3.toLocaleTimeString('en-US');
+
+                                openingTime = openingTime.concat(day + "- Open: " + time2 + "  Close: " + time4 + "\n")
+                                break;
+                            case 5:
+                                day = "Friday";
+                                var time = new Date(details.Hours[0].OpenTime)
+                                var time2 = time.toLocaleTimeString('en-US');
+
+                                var time3 = new Date(details.Hours[0].CloseTime)
+                                var time4 = time3.toLocaleTimeString('en-US');
+
+                                openingTime = openingTime.concat(day + "- Open: " + time2 + "  Close: " + time4 + "\n")
+                                break;
+                            case 6:
+                                day = "Saturday";
+                                var time = new Date(details.Hours[0].OpenTime)
+                                var time2 = time.toLocaleTimeString('en-US');
+
+                                var time3 = new Date(details.Hours[0].CloseTime)
+                                var time4 = time3.toLocaleTimeString('en-US');
+
+                                openingTime = openingTime.concat(day + "- Open: " + time2 + "  Close: " + time4 + "\n")
+                                break;
+                            default:
+                                day = "Not Known";
+                                break;
+                        };                        
+                    }
+                    alert(openingTime);
+                }
+            })
+        }
+    </script>
+    }
