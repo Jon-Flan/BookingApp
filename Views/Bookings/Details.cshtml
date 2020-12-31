@@ -10,16 +10,9 @@
     <h4>Booking</h4>
     <hr />
     <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Company.Name)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Company.Name)
-        </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.party_name)
+            @Html.LabelFor(model => model.party_name,"Booking Name")
         </dt>
 
         <dd>
@@ -43,7 +36,7 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.NumPeople)
+            @Html.LabelFor(model => model.NumPeople,"Number of People")
         </dt>
 
         <dd>
@@ -51,7 +44,7 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.FName)
+            @Html.LabelFor(model => model.FName,"First Name")
         </dt>
 
         <dd>
@@ -59,7 +52,7 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.LName)
+            @Html.LabelFor(model => model.LName,"Last Name")
         </dt>
 
         <dd>
@@ -67,7 +60,7 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Email)
+            @Html.LabelFor(model => model.Email,"Email")
         </dt>
 
         <dd>
@@ -75,7 +68,7 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Phone)
+            @Html.LabelFor(model => model.Phone,"Phone")
         </dt>
 
         <dd>

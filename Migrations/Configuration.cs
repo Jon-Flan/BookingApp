@@ -24,7 +24,7 @@ namespace Booking_App.Migrations
                 new Company()
                 {
                     ID = 1,
-                    Name = "Best Resteraunt",
+                    Name = "Best Restaurant",
                     Address = "1 Henry Street, Dublin 1",
                     Phone = "01-8076943",
                     CapacityID = 1
