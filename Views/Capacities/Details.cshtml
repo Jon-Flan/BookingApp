@@ -1,0 +1,42 @@
+﻿@model Booking_App.Models.Capacity
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Capacity</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.max_capacity)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.max_capacity)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.max_per_group)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.max_per_group)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.max_stay_length)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.max_stay_length)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

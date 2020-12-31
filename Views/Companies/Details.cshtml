@@ -1,0 +1,133 @@
+﻿@model Booking_App.Models.DTO.CompanyDTO
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>@Html.DisplayFor(model => model.Name)</h2>
+
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        
+        <dt>
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Address)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Address)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Phone)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Phone)
+        </dd>
+
+    </dl>
+</div>
+
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
+<hr />
+<br />
+    <div>
+        <h4>Opening Times</h4>
+        <table class="table">
+            <tr>
+                <th>
+                    <h4>Day</h4>
+                </th>
+                <th>
+                    <h4>Opening Time</h4>
+                </th>
+                <th>
+                    <h4>Closing Time</h4>
+                </th>
+                <th></th>
+            </tr>
+            @foreach (var hour in Model.Hours)
+            {
+                var dayNum = hour.Day;
+
+                var day = "Not Known";
+
+                switch(dayNum) {
+                    case 7:
+                        day = "Sunday";
+                        break;
+                    case 1:
+                        day = "Monday";
+                        break;
+                    case 2:
+                        day = "Tuesday";
+                        break;
+                    case 3:
+                        day = "Wednesday";
+                        break;
+                    case 4:
+                        day = "Thursday";
+                        break;
+                    case 5:
+                        day = "Friday";
+                        break;
+                    case 6:
+                        day = "Saturday";
+                        break;
+                    default:
+                        day = "Not Known";
+                        break;
+                };
+               <tr>
+                   <td id="dayName">
+                       @Html.DisplayFor(model => day)
+                   </td>
+                   <td>
+                       @Html.DisplayFor(model => hour.OpenTime)
+                   </td>
+                   <td>
+                       @Html.DisplayFor(model => hour.CloseTime)
+                   </td>
+               </tr>
+            }
+            </table>
+    </div>
+    <hr />
+<br />
+    <div>
+        <h4>Other Details</h4>
+        <p>Due to government restrictions and the ongoing social situation with Covid19 the following restrictions are in place. These are to keep you and us safe. Thank you for your understanding.</p>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.LabelFor(model => model.Capacity.max_per_group, "Max People Per Group")
+            </dt>
+            <dd id="dayName">
+                @Html.DisplayFor(model => model.Capacity.max_per_group)
+            </dd>
+            <dt>
+                @Html.LabelFor(model => model.Capacity.max_stay_length, "Max length of stay")
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Capacity.max_stay_length) (minutes)
+            </dd>
+            <dt>
+                @Html.LabelFor(model => model.Capacity.max_capacity, "Premises Capacity")
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Capacity.max_capacity)
+            </dd>
+        </dl>
+    </div>
