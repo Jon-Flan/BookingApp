@@ -55,7 +55,7 @@ namespace Booking_App.Controllers
             {
                 db.Company_Hours.Add(company_Hour);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("Details","Companies",new { id = company_Hour.CompanyID});
             }
 
             ViewBag.CompanyID = new SelectList(db.Companys, "ID", "Name", company_Hour.CompanyID);

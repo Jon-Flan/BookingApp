@@ -15,11 +15,11 @@ namespace Booking_App.Models
         public int Day { get; set; }
         [Required]
         [DataType(DataType.Time)]
-        [DisplayFormat(DataFormatString = "{0:hh\\:mm}", ApplyFormatInEditMode = true)]
+        [DisplayFormat(DataFormatString = "{0:HH\\:mm}", ApplyFormatInEditMode = true)]
         public DateTime OpenTime { get; set; }
         [Required]
         [DataType(DataType.Time)]
-        [DisplayFormat(DataFormatString = "{0:hh\\:mm}", ApplyFormatInEditMode = true)]
+        [DisplayFormat(DataFormatString = "{0:HH\\:mm}", ApplyFormatInEditMode = true)]
         public DateTime CloseTime { get; set; }
         //Forgein Key 
         public int CompanyID { get; set; }
