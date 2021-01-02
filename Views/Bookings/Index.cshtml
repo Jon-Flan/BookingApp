@@ -1,13 +1,13 @@
 ﻿@model IEnumerable<Booking_App.Models.Booking>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Bookings";
 }
 
-<h2>Index</h2>
+<h2>Bookings</h2>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
+<p >
+    @Html.ActionLink("Create New", "Create", "Bookings",new { @class = "btn btn-primary btn-lg" })
 </p>
 <table class="table">
     <tr>
@@ -37,7 +37,7 @@
             </td>
             <td >
                @Html.DisplayFor(modelItem => item.party_name)
-               <a onmousedown="onNameMouseOver(@item.ID)" href="#" class="btn btn-primary btn-xs">Info &raquo;</a>
+               <a onmousedown="onNameMouseOver(@item.ID)" href="#" class="btn btn-primary btn-xs">Quick look &raquo;</a>
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Date)
@@ -49,9 +49,7 @@
                 @Html.DisplayFor(modelItem => item.NumPeople)
             </td>
             <td>
-                @Html.ActionLink("Edit", "Edit", new { id = item.ID }) |
-                @Html.ActionLink("Details", "Details", new { id = item.ID }) |
-                @Html.ActionLink("Delete", "Delete", new { id = item.ID })
+                @Html.ActionLink("Details", "Details", new { id = item.ID }, new { @class = "btn btn-success btn-sm" })
             </td>
         </tr>
     }

@@ -31,17 +31,17 @@ namespace Booking_App.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             var company = db.Companys.Select(b =>
-            new CompanyDTO()
-            {
-                ID = b.ID,
-                Name = b.Name,
-                Address = b.Address,
-                Phone = b.Phone,
-                Capacity = b.Capacity,
-                CapacityID = b.CapacityID,
-                Hours = b.Hours,
-                Bookings = b.Bookings
-            }).SingleOrDefault(b => b.ID == id);
+           new CompanyDTO()
+           {
+               ID = b.ID,
+               Name = b.Name,
+               Address = b.Address,
+               Phone = b.Phone,
+               Capacity = b.Capacity,
+               CapacityID = b.CapacityID,
+               Hours = b.Hours,
+               Bookings = b.Bookings
+           }).SingleOrDefault(b => b.ID == id);
 
             if (company == null)
             {
@@ -53,7 +53,7 @@ namespace Booking_App.Controllers
         // GET: Companies/Create
         public ActionResult Create()
         {
-            ViewBag.CapacityID = new SelectList(db.Capacitys, "ID", "ID");
+            ViewBag.ID = new SelectList(db.Capacitys, "CompanyID", "CompanyID");
             return View();
         }
 
@@ -62,7 +62,7 @@ namespace Booking_App.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ID,Name,Address,Phone,CapacityID")] Company company)
+        public ActionResult Create([Bind(Include = "ID,Name,Address,Phone")] Company company)
         {
             if (ModelState.IsValid)
             {
@@ -71,7 +71,7 @@ namespace Booking_App.Controllers
                 return RedirectToAction("Index");
             }
 
-            ViewBag.CapacityID = new SelectList(db.Capacitys, "ID", "ID", company.CapacityID);
+            ViewBag.ID = new SelectList(db.Capacitys, "CompanyID", "CompanyID", company.ID);
             return View(company);
         }
 
@@ -87,7 +87,7 @@ namespace Booking_App.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.CapacityID = new SelectList(db.Capacitys, "ID", "ID", company.CapacityID);
+            ViewBag.ID = new SelectList(db.Capacitys, "CompanyID", "CompanyID", company.ID);
             return View(company);
         }
 
@@ -104,7 +104,7 @@ namespace Booking_App.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.CapacityID = new SelectList(db.Capacitys, "ID", "ID", company.CapacityID);
+            ViewBag.ID = new SelectList(db.Capacitys, "CompanyID", "CompanyID", company.ID);
             return View(company);
         }
 

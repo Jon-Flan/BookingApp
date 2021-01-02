@@ -13,7 +13,7 @@ namespace Booking_App.Migrations
         
         string IMigrationMetadata.Id
         {
-            get { return "202012310139132_ComplexDataModel"; }
+            get { return "202101020415330_ComplexDataModel"; }
         }
         
         string IMigrationMetadata.Source
