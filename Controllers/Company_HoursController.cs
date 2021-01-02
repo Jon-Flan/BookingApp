@@ -89,7 +89,7 @@ namespace Booking_App.Controllers
             {
                 db.Entry(company_Hour).State = EntityState.Modified;
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("Details", "Companies", new { id = company_Hour.CompanyID });
             }
             ViewBag.CompanyID = new SelectList(db.Companys, "ID", "Name", company_Hour.CompanyID);
             return View(company_Hour);
@@ -118,7 +118,7 @@ namespace Booking_App.Controllers
             Company_Hour company_Hour = db.Company_Hours.Find(id);
             db.Company_Hours.Remove(company_Hour);
             db.SaveChanges();
-            return RedirectToAction("Index");
+            return RedirectToAction("Details", "Companies", new { id = company_Hour.CompanyID });
         }
 
         protected override void Dispose(bool disposing)
