@@ -7,7 +7,7 @@
 <h2>Companies</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Create New", "Create","Companies" ,new { @class = "btn btn-primary btn-lg" })
 </p>
 <table class="table">
     <tr>
@@ -23,25 +23,25 @@
         </th>
     </tr>
 
-@foreach (var item in Model) {
-<tr>
-    <td>
-        @Html.DisplayFor(modelItem => item.Name)  
-        <a onmousedown="onNameMouseOver(@item.ID)" href="#" class="btn btn-primary btn-xs">Info &raquo;</a>
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.Address)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.Phone)
-    </td>
-    <td>
-        @Html.ActionLink("Edit", "Edit", new { id = item.ID }) |
-        @Html.ActionLink("Details", "Details", new { id = item.ID }) |
-        @Html.ActionLink("Delete", "Delete", new { id = item.ID })
-    </td>
-</tr>
-}
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+                <a onmousedown="onNameMouseOver(@item.ID)" href="#" class="btn btn-primary btn-xs">Opening Times &raquo;</a>
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Address)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Phone)
+            </td>
+            <td>
+                @Html.ActionLink("Details", "Details", new { id = item.ID }, new { @class = "btn btn-success btn-sm" }) |
+                @Html.ActionLink("Make a Booking", "Create", "Bookings", new { area = "Bookings" }, new { @class = "btn btn-warning btn-sm" })
+            </td>
+        </tr>
+    }
 
 </table>
 
@@ -56,92 +56,74 @@
                 dataType:"text",
                 success: function (result) {
                     var details = JSON.parse(result);
-
                     var numDays = details.Hours.length;
-
-
                     var openingTime = "Opening Times: \n";
-
                     for (var i = 0; i < details.Hours.length; i++ ) {
                         switch (details.Hours[i].Day) {
                             case 7:
                                 day = "Sunday";
                                 var time = new Date(details.Hours[0].OpenTime)
                                 var time2 = time.toLocaleTimeString('en-US');
-
                                 var time3 = new Date(details.Hours[0].CloseTime)
                                 var time4 = time3.toLocaleTimeString('en-US');
-
                                 openingTime = openingTime.concat(day + "- Open: " + time2 + "  Close: "+ time4 +"\n")
                                 break;
                             case 1:
                                 day = "Monday";
                                 var time = new Date(details.Hours[0].OpenTime)
                                 var time2 = time.toLocaleTimeString('en-US');
-
                                 var time3 = new Date(details.Hours[0].CloseTime)
                                 var time4 = time3.toLocaleTimeString('en-US');
-
                                 openingTime = openingTime.concat(day + "- Open: " + time2 + "  Close: " + time4 + "\n")
                                 break;
                             case 2:
                                 day = "Tuesday";
                                 var time = new Date(details.Hours[0].OpenTime)
                                 var time2 = time.toLocaleTimeString('en-US');
-
                                 var time3 = new Date(details.Hours[0].CloseTime)
                                 var time4 = time3.toLocaleTimeString('en-US');
-
                                 openingTime = openingTime.concat(day + "- Open: " + time2 + "  Close: " + time4 + "\n")
                                 break;
                             case 3:
                                 day = "Wednesday";
                                 var time = new Date(details.Hours[0].OpenTime)
                                 var time2 = time.toLocaleTimeString('en-US');
-
                                 var time3 = new Date(details.Hours[0].CloseTime)
                                 var time4 = time3.toLocaleTimeString('en-US');
-
                                 openingTime = openingTime.concat(day + "- Open: " + time2 + "  Close: " + time4 + "\n")
                                 break;
                             case 4:
                                 day = "Thursday";
                                 var time = new Date(details.Hours[0].OpenTime)
                                 var time2 = time.toLocaleTimeString('en-US');
-
                                 var time3 = new Date(details.Hours[0].CloseTime)
                                 var time4 = time3.toLocaleTimeString('en-US');
-
                                 openingTime = openingTime.concat(day + "- Open: " + time2 + "  Close: " + time4 + "\n")
                                 break;
                             case 5:
                                 day = "Friday";
                                 var time = new Date(details.Hours[0].OpenTime)
                                 var time2 = time.toLocaleTimeString('en-US');
-
                                 var time3 = new Date(details.Hours[0].CloseTime)
                                 var time4 = time3.toLocaleTimeString('en-US');
-
                                 openingTime = openingTime.concat(day + "- Open: " + time2 + "  Close: " + time4 + "\n")
                                 break;
                             case 6:
                                 day = "Saturday";
                                 var time = new Date(details.Hours[0].OpenTime)
                                 var time2 = time.toLocaleTimeString('en-US');
-
                                 var time3 = new Date(details.Hours[0].CloseTime)
                                 var time4 = time3.toLocaleTimeString('en-US');
-
                                 openingTime = openingTime.concat(day + "- Open: " + time2 + "  Close: " + time4 + "\n")
                                 break;
                             default:
                                 day = "Not Known";
                                 break;
-                        };                        
+                        };
                     }
                     alert(openingTime);
                 }
             })
         }
     </script>
-    }
+}

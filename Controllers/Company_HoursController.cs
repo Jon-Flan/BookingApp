@@ -11,18 +11,18 @@ using Booking_App.Models.DAL;
 
 namespace Booking_App.Controllers
 {
-    public class Company_HourController : Controller
+    public class Company_HoursController : Controller
     {
         private Booking_AppContext db = new Booking_AppContext();
 
-        // GET: Company_Hour
+        // GET: Company_Hours
         public ActionResult Index()
         {
             var company_Hours = db.Company_Hours.Include(c => c.Company);
             return View(company_Hours.ToList());
         }
 
-        // GET: Company_Hour/Details/5
+        // GET: Company_Hours/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
@@ -37,14 +37,14 @@ namespace Booking_App.Controllers
             return View(company_Hour);
         }
 
-        // GET: Company_Hour/Create
+        // GET: Company_Hours/Create
         public ActionResult Create()
         {
             ViewBag.CompanyID = new SelectList(db.Companys, "ID", "Name");
             return View();
         }
 
-        // POST: Company_Hour/Create
+        // POST: Company_Hours/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
@@ -62,7 +62,7 @@ namespace Booking_App.Controllers
             return View(company_Hour);
         }
 
-        // GET: Company_Hour/Edit/5
+        // GET: Company_Hours/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -78,7 +78,7 @@ namespace Booking_App.Controllers
             return View(company_Hour);
         }
 
-        // POST: Company_Hour/Edit/5
+        // POST: Company_Hours/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
@@ -95,7 +95,7 @@ namespace Booking_App.Controllers
             return View(company_Hour);
         }
 
-        // GET: Company_Hour/Delete/5
+        // GET: Company_Hours/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -110,7 +110,7 @@ namespace Booking_App.Controllers
             return View(company_Hour);
         }
 
-        // POST: Company_Hour/Delete/5
+        // POST: Company_Hours/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)

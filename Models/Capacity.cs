@@ -9,13 +9,17 @@ namespace Booking_App.Models
 {
     public class Capacity
     {
-        public int ID { get; set; }
+        [Key]
+        [ForeignKey("Company")]
+        public int CompanyID { get; set; }
         [Required]
         public int max_capacity { get; set; }
         [Required]
         public int max_per_group{ get; set; }
         [Required]
         public int max_stay_length { get; set; }
+
+        public virtual Company Company { get; set; }
 
     }
 }

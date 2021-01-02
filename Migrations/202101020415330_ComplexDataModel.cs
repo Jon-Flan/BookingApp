@@ -36,20 +36,20 @@ namespace Booking_App.Migrations
                         Phone = c.String(maxLength: 25),
                         CapacityID = c.Int(nullable: false),
                     })
-                .PrimaryKey(t => t.ID)
-                .ForeignKey("dbo.Capacity", t => t.CapacityID, cascadeDelete: true)
-                .Index(t => t.CapacityID);
+                .PrimaryKey(t => t.ID);
             
             CreateTable(
                 "dbo.Capacity",
                 c => new
                     {
-                        ID = c.Int(nullable: false, identity: true),
+                        CompanyID = c.Int(nullable: false),
                         max_capacity = c.Int(nullable: false),
                         max_per_group = c.Int(nullable: false),
                         max_stay_length = c.Int(nullable: false),
                     })
-                .PrimaryKey(t => t.ID);
+                .PrimaryKey(t => t.CompanyID)
+                .ForeignKey("dbo.Company", t => t.CompanyID, cascadeDelete: true)
+                .Index(t => t.CompanyID);
             
             CreateTable(
                 "dbo.Company_Hour",
@@ -70,10 +70,10 @@ namespace Booking_App.Migrations
         public override void Down()
         {
             DropForeignKey("dbo.Company_Hour", "CompanyID", "dbo.Company");
-            DropForeignKey("dbo.Company", "CapacityID", "dbo.Capacity");
+            DropForeignKey("dbo.Capacity", "CompanyID", "dbo.Company");
             DropForeignKey("dbo.Booking", "CompanyID", "dbo.Company");
             DropIndex("dbo.Company_Hour", new[] { "CompanyID" });
-            DropIndex("dbo.Company", new[] { "CapacityID" });
+            DropIndex("dbo.Capacity", new[] { "CompanyID" });
             DropIndex("dbo.Booking", new[] { "CompanyID" });
             DropTable("dbo.Company_Hour");
             DropTable("dbo.Capacity");

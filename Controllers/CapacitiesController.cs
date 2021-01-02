@@ -18,7 +18,8 @@ namespace Booking_App.Controllers
         // GET: Capacities
         public ActionResult Index()
         {
-            return View(db.Capacitys.ToList());
+            var capacitys = db.Capacitys.Include(c => c.Company);
+            return View(capacitys.ToList());
         }
 
         // GET: Capacities/Details/5
@@ -39,6 +40,7 @@ namespace Booking_App.Controllers
         // GET: Capacities/Create
         public ActionResult Create()
         {
+            ViewBag.CompanyID = new SelectList(db.Companys, "ID", "Name");
             return View();
         }
 
@@ -47,7 +49,7 @@ namespace Booking_App.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ID,max_capacity,max_per_group,max_stay_length")] Capacity capacity)
+        public ActionResult Create([Bind(Include = "CompanyID,max_capacity,max_per_group,max_stay_length")] Capacity capacity)
         {
             if (ModelState.IsValid)
             {
@@ -56,6 +58,7 @@ namespace Booking_App.Controllers
                 return RedirectToAction("Index");
             }
 
+            ViewBag.CompanyID = new SelectList(db.Companys, "ID", "Name", capacity.CompanyID);
             return View(capacity);
         }
 
@@ -71,6 +74,7 @@ namespace Booking_App.Controllers
             {
                 return HttpNotFound();
             }
+            ViewBag.CompanyID = new SelectList(db.Companys, "ID", "Name", capacity.CompanyID);
             return View(capacity);
         }
 
@@ -79,7 +83,7 @@ namespace Booking_App.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ID,max_capacity,max_per_group,max_stay_length")] Capacity capacity)
+        public ActionResult Edit([Bind(Include = "CompanyID,max_capacity,max_per_group,max_stay_length")] Capacity capacity)
         {
             if (ModelState.IsValid)
             {
@@ -87,6 +91,7 @@ namespace Booking_App.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
+            ViewBag.CompanyID = new SelectList(db.Companys, "ID", "Name", capacity.CompanyID);
             return View(capacity);
         }
 

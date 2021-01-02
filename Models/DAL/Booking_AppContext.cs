@@ -23,6 +23,11 @@ namespace Booking_App.Models.DAL
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
+            modelBuilder.Entity<Company>()
+                .HasRequired(a => a.Capacity)
+                .WithRequiredPrincipal(c => c.Company)
+                .WillCascadeOnDelete();
+                
 
         }
     }

@@ -4,28 +4,13 @@
     ViewBag.Title = "Delete";
 }
 
-<h2>Delete</h2>
+<h2>Booking: @Html.DisplayFor(model => model.party_name)</h2>
 
-<h3>Are you sure you want to delete this?</h3>
+<h3 class="form_names">Are you sure you want to delete this?</h3>
+
 <div>
-    <h4>Booking</h4>
     <hr />
     <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Company.Name)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Company.Name)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.party_name)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.party_name)
-        </dd>
 
         <dt>
             @Html.DisplayNameFor(model => model.Date)
@@ -52,7 +37,7 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.FName)
+            First Name
         </dt>
 
         <dd>
@@ -60,7 +45,7 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.LName)
+            Last Name
         </dt>
 
         <dd>
@@ -85,12 +70,13 @@
 
     </dl>
 
-    @using (Html.BeginForm()) {
+    @using (Html.BeginForm())
+    {
         @Html.AntiForgeryToken()
 
         <div class="form-actions no-color">
-            <input type="submit" value="Delete" class="btn btn-default" /> |
-            @Html.ActionLink("Back to List", "Index")
+            <input type="submit" value="Yes" class="btn btn-success btn-lg" />
+            @Html.ActionLink("No", "Index", "Bookings", new { @class = "btn btn-danger btn-lg" })
         </div>
     }
 </div>

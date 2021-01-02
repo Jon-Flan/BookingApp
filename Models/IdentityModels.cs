@@ -21,7 +21,7 @@ namespace Booking_App.Models
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
         public ApplicationDbContext()
-            : base("DefaultConnection", throwIfV1Schema: false)
+            : base("Booking_AppContext", throwIfV1Schema: false)
         {
         }
 

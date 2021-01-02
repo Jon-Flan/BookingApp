@@ -1,12 +1,11 @@
 ﻿@model Booking_App.Models.Company
 
 @{
-    ViewBag.Title = "Delete";
+    ViewBag.Title = "Details";
 }
 
-<h2>Delete</h2>
+<h2>Details</h2>
 
-<h3 class="form_names">Are you sure you want to delete @Html.DisplayFor(model => model.Name)?</h3>
 <div>
     <h4>Company</h4>
     <hr />
@@ -43,16 +42,17 @@
             @Html.DisplayFor(model => model.Phone)
         </dd>
 
+        <dt>
+            @Html.DisplayNameFor(model => model.CapacityID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CapacityID)
+        </dd>
 
     </dl>
-
-    @using (Html.BeginForm())
-    {
-        @Html.AntiForgeryToken()
-
-        <div class="form-actions no-color">
-            <input type="submit" value="Yes" class="btn btn-success btn-lg" />
-            @Html.ActionLink("No", "Index", "Companies", new { @class = "btn btn-danger btn-lg" })
-        </div>
-    }
 </div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
