@@ -55,7 +55,7 @@ namespace Booking_App.Controllers
             {
                 db.Capacitys.Add(capacity);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("Create","Company_Hours");
             }
 
             ViewBag.CompanyID = new SelectList(db.Companys, "ID", "Name", capacity.CompanyID);
